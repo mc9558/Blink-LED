@@ -1,54 +1,150 @@
-/* 
- * Project myProject2.0
- * Author: Diego E. Morales
- * Date: 01/27/26
- * For comprehensive documentation and examples, please visit:
- * https://docs.particle.io/firmware/best-practices/firmware-template/
- */
+int led1 = D7;
+int led2 = A0;
+int button = A1;
+int count1 = 0;
 
-// Include Particle Device OS APIs
-#include "Particle.h"
+void setup() {
+    
+  pinMode(led2, OUTPUT);
+  pinMode(led1, OUTPUT);
+  pinMode(button, INPUT);
+  Particle.subscribe("S.O.S.", SOS, MY_DEVICES);
+  }
 
-// We define MY_LED to be the LED that we want to blink.
-//
-// In this tutorial, we're using the blue D7 LED (next to D7 on the Photon
-// and Electron, and next to the USB connector on the Argon and Boron).
-const pin_t MY_LED = D7;
-
-// The following line is optional, but recommended in most firmware. It
-// allows your code to run before the cloud is connected. In this case,
-// it will begin blinking almost immediately instead of waiting until
-// breathing cyan,
-SYSTEM_THREAD(ENABLED);
-SYSTEM_MODE(SEMI_AUTOMATIC);
-
-// Random note to show git tools
-
-// The setup() method is called once when the device boots.
-void setup()
-{
-  // Particle.disconnect();
-  // WiFi.off();
-	// In order to set a pin, you must tell Device OS that the pin is
-	// an OUTPUT pin. This is often done from setup() since you only need
-	// to do it once.
-	pinMode(MY_LED, OUTPUT);
+void SOS(const char *event, const char *data) {
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(500);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(750);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(750);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(750);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(500);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
 }
 
-// The loop() method is called frequently.
-void loop()
-{
-	// Turn on the LED
-	digitalWrite(MY_LED, HIGH);
+void loop() {
+    int stateButton = digitalRead(button); //read the state of the button
+    if(stateButton == 0) 
+    {
+    count1++;
+    }
+    else
+    {}
 
-	// Leave it on for one second
-	delay(3s);
+        if(count1>1)
+                { 
+                    Particle.publish("S.O.S.","Help!", PRIVATE);
+                    
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(500);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(750);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(750);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(750);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(500);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    
+                    count1++;
+                }
+            else
+            {}
+        
+        if(count1 > 3)
+                {
+                    count1 =0;
+                }
+            else
+            {}
 
-	// Turn it off
-	digitalWrite(MY_LED, LOW);
-
-	// Wait one more second
-	delay(1s);
-
-	// And repeat!
+delay(500);
 }
