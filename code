@@ -1,0 +1,162 @@
+/* 
+ * Project Lab 3
+ * Author: Michael Churikov and Diego Morales
+ * Date: 02/09/26
+ * For comprehensive documentation and examples, please visit:
+ * https://docs.particle.io/firmware/best-practices/firmware-template/
+ */
+
+// Include Particle Device OS APIs
+#include "Particle.h"
+
+
+int led1 = D7;
+int led2 = A0;
+int button = A1;
+int count1 = 0;
+
+void setup() {
+    
+  pinMode(led2, OUTPUT);
+  pinMode(led1, OUTPUT);
+  pinMode(button, INPUT);
+  Particle.subscribe("S.O.S.", SOS, MY_DEVICES);
+  }
+
+void SOS(const char *event, const char *data) {
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(500);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(750);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(750);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(750);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(500);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+}
+
+void loop() {
+    int stateButton = digitalRead(button); //read the state of the button
+    if(stateButton == 0) 
+    {
+    count1++;
+    }
+    else
+    {}
+
+        if(count1>1)
+                { 
+                    Particle.publish("S.O.S.","Help!", PRIVATE);
+                    
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(500);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(750);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(750);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(750);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(500);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    delay(250);
+                    digitalWrite(led1,HIGH);
+                    digitalWrite(led2,HIGH);
+                    delay(250);
+                    digitalWrite(led1,LOW);
+                    digitalWrite(led2,LOW);
+                    
+                    count1++;
+                }
+            else
+            {}
+        
+        if(count1 > 3)
+                {
+                    count1 =0;
+                }
+            else
+            {}
+
+delay(500);
+}
